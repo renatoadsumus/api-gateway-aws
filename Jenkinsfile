@@ -13,7 +13,7 @@ pipeline {
 		
 			steps{								
 				
-                sh(""" aws apigateway import-rest-api --body file://music-dev-swagger.yaml --region us-east-1 """)
+                sh(""" ./create-api.sh """)
 
                 echo "#####################################"	
                 echo "###  IMPORT API GATEWAY  ###"
