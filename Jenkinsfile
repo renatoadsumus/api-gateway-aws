@@ -9,7 +9,7 @@ pipeline {
 
 	stages{  	
 		
-		stage('Import Swager Api Gateway'){
+		stage('Create Api'){
 		
 			steps{								
 				
@@ -21,6 +21,21 @@ pipeline {
 			
 			}		
 		}	
+		
+		stage('Deploy Api'){
+		
+			steps{								
+				
+				echo "${env.APIID}"
+                sh(""" aws apigateway create-deployment --rest-api-id ${env.APIID} --stage-name dev --region us-east-1 """)
+				
+
+                echo "#####################################"	
+                echo "###  IMPORT API GATEWAY  ###"
+                echo "#####################################"                
+			
+			}		
+		}
 		
 	}	
 
