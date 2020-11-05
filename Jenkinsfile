@@ -26,8 +26,8 @@ pipeline {
 		
 			steps{								
 				
-				echo "${env.APIID}"
-                sh(""" aws apigateway create-deployment --rest-api-id ${env.APIID} --stage-name dev --region us-east-1 """)
+//				echo "${env.APIID}"
+//                sh(""" aws apigateway create-deployment --rest-api-id ${env.APIID} --stage-name dev --region us-east-1 """)
 				
 
                 echo "#####################################"	
