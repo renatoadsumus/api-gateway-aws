@@ -1,0 +1,40 @@
+---
+swagger: "2.0"
+info:
+  version: "2020-11-04T13:16:49Z"
+  title: "music"
+host: "5rergbgt8j.execute-api.us-east-1.amazonaws.com"
+basePath: "/dev"
+schemes:
+- "https"
+paths:
+  /:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /music/{idNumber}:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "idNumber"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"
+
