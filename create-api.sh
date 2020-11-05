@@ -10,7 +10,7 @@ export APIID=$(aws apigateway import-rest-api --body file://music-dev-swagger.ya
 
 PARENTRESOURCEID=$(aws apigateway get-resources --rest-api-id ${APIID} --query "items[?path=='/'].id" --output text --region ${REGION})
 
-PUTINTEGRATIONID=$(aws apigateway put-integration --rest-api-id ${APIID} --resource-id ${PARENTRESOURCEID} --http-method GET --type HTTP --integration-http-method GET --uri 'http://orangevalleycaa.org/api/music/' --output text)
+PUTINTEGRATIONID=$(aws apigateway put-integration --rest-api-id ${APIID} --resource-id ${PARENTRESOURCEID} --http-method GET --type HTTP --integration-http-method GET --uri 'http://orangevalleycaa.org/api/music/' --output text --region ${REGION})
 
 #APIDEPLOY=$(aws apigateway create-deployment --rest-api-id ${APIID} --stage-name dev --region ${REGION} )
 
