@@ -4,7 +4,7 @@ set -e
 
 REGION="us-east-1"
 
-APIID=$(aws apigateway import-rest-api --cli-binary-format raw-in-base64-out --body file://music-dev-swagger.yaml --output text --query id --region ${REGION})
+APIID=$(aws apigateway import-rest-api --body file://music-dev-swagger.yaml --output text --query id --region ${REGION})
 
 PARENTRESOURCEID=$(aws apigateway get-resources --rest-api-id ${APIID} --query "items[?path=='/'].id" --output text --region ${REGION})
 
