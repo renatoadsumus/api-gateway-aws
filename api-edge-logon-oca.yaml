@@ -1,0 +1,105 @@
+---
+openapi: 3.0.1
+info:
+  title: api-edge-logon-oca
+  description: API Projeto OCA Cloud
+  version: '1.0'
+paths:
+  "/doLogon":    
+    post:
+      operationId: doLogon
+      parameters:
+      - name: pre-login
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string      
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/doLogonRequest"
+        required: true
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/doLogonRequest"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: HTTP
+        httpMethod: POST
+        uri: https://vpf48tf3eh.execute-api.us-east-1.amazonaws.com/develop-sandbox
+        payloadFormatVersion: 1  
+components:
+  schemas:
+    doLogonRequest:
+      title: doLogonRequest
+      required:
+      - url
+      - method
+      - body
+      type: object
+      properties:
+        url:
+          type: string
+        method:
+          type: string
+        body:
+          $ref: '#/components/schemas/Body'
+      example:
+        url: /router-app/router/
+        method: POST
+        body:
+          portal: abrecuentas-latam-oca
+          is_client: false
+    Body:
+      title: Body
+      required:
+      - portal
+      - is_client
+      type: object
+      properties:
+        portal:
+          type: string
+        is_client:
+          type: string
+      example:
+        portal: abrecuentas-latam-oca
+        is_client: false
+    doLogonClientsRequest:
+      title: doLogonClientsRequest
+      required:
+      - url
+      - method
+      - body
+      type: object
+      properties:
+        url:
+          type: string
+        method:
+          type: string
+        body:
+          $ref: '#/components/schemas/Body'
+      example:
+        url: /router-app/router/
+        method: POST
+        body:
+          portal: abrecuentas-latam-oca
+          is_client: true
+tags:
+- name: Misc
+  description: ''
+
