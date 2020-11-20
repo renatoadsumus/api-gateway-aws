@@ -41,7 +41,7 @@ paths:
         contentHandling: "CONVERT_TO_TEXT"
         type: HTTP
         httpMethod: POST
-        uri: https://vpf48tf3eh.execute-api.us-east-1.amazonaws.com/develop-sandbox
+        uri: https://api.latam.execute-api.us-east-1.amazonaws.com/producao
         payloadFormatVersion: 1  
 components:
   schemas:
