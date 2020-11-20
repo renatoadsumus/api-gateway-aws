@@ -6,6 +6,11 @@ pipeline {
 	    }	    
 	}
 	
+	 parameters {
+		
+		string(defaultValue: "", description: 'Informar APIID', name: 'APIID')
+	}
+	
 
 	stages{  	
 		
@@ -13,7 +18,8 @@ pipeline {
 		
 			steps{								
 				
-                sh(""" ./update-api.sh """)
+                sh(""" ./update-api.sh ${env.APIID} """)
+				//sh(""" aws apigateway put-rest-api --rest-api-id ${env.APIID} --mode overwrite --body 'file://api-edge-logon-oca-update.yaml' --region us-east-1 """)
 
                 echo "#####################################"	
                 echo "###  IMPORT API GATEWAY  ###"
